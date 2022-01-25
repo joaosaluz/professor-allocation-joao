@@ -21,8 +21,19 @@ public class Allocation {
     @Column(nullable = false)
     private Date end;
 
+    @Column(name = "course_id", nullable = false)
     private Long courseId;
+
+    @Column(name = "professor_id", nullable = false)
     private Long professorId;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "course_id", nullable = false, insertable = false, updatable = false)
+    private Course course;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "professor_id", nullable = false, insertable = false, updatable = false)
+    private Professor professor;
 
     public Long getId() {
         return id;
@@ -70,5 +81,21 @@ public class Allocation {
 
     public void setProfessorId(Long professorId) {
         this.professorId = professorId;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }
