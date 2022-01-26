@@ -10,5 +10,6 @@ import java.util.List;
 public interface ProfessorRepository extends JpaRepository<Professor,Long>{
 
     List<Professor> findByNameContaining(String partName);
+
     List<Professor> findByDepartmentId(Long departamento);
 }
