@@ -1,15 +1,23 @@
 package com.project.professor.allocation.service;
 
+import com.project.professor.allocation.entity.Allocation;
 import com.project.professor.allocation.repository.AllocationRepository;
-import com.project.professor.allocation.repository.CourseRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AllocationService {
 
-    private AllocationRepository allocationRepository;
+    private final AllocationRepository allocationRepository;
 
-    public AllocationService(AllocationRepository allocationRepository){
+    public AllocationService(AllocationRepository allocationRepository) {
         this.allocationRepository = allocationRepository;
+    }
+
+    public Allocation findById(Long id) {
+        Optional<Allocation> allocationOptional = allocationRepository.findById(id);
+        Allocation allocation = allocationOptional.orElse(null);
+        return allocation;
     }
 }
