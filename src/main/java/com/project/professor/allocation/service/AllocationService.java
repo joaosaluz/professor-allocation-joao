@@ -16,6 +16,7 @@ public class AllocationService {
     }
 
     public Allocation findById(Long id) {
+
         Optional<Allocation> allocationOptional = allocationRepository.findById(id);
         Allocation allocation = allocationOptional.orElse(null);
         return allocation;
